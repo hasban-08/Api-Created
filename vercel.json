@@ -5,8 +5,9 @@
     { "src": "web/package.json", "use": "@vercel/static-build", "config": { "distDir": "build" } }
   ],
   "routes": [
-    { "src": "/products/(.*)", "dest": "server.js" },
-    { "src": "/products", "dest": "server.js" },
-    { "src": "/(.*)", "dest": "web/build/$1" }
+    { "src": "/products/(.*)", "dest": "/server.js" },
+    { "src": "/products", "dest": "/server.js" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/web/build/index.html" }
   ]
 }
