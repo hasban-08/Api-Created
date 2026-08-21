@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-const API_URL = process.env.NODE_ENV === "production" 
-  ? "/products" 
-  : "http://localhost:5000/products";
+
+const API_URL = "https://api-created-js53.vercel.app/products";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
