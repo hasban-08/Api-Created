@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-const API_URL = "http://localhost:5000/products";
+const API_URL = process.env.NODE_ENV === "production" 
+  ? "/products" 
+  : "http://localhost:5000/products";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -92,7 +94,7 @@ function ProductList() {
             <h3>{editId ? "Edit Product" : "Add Product"}</h3>
             <form onSubmit={handleSubmit}>
               <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
-              <input type="number" name="price" placeholder="Price" value={form.price} onChange={handleChange} required />
+              <input type="text" name="price" placeholder="Price" value={form.price} onChange={handleChange} required />
               <input type="number" name="quantity" placeholder="Quantity" value={form.quantity} onChange={handleChange} required />
 
               <div className="modal-actions">
